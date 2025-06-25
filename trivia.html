@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trivia Interactiva</title>
+</head>
+<body>
+  <div id="setupScreen" class="screen">
+    <h1>Trivia Interactiva</h1>
+    <form id="setupForm">
+      <label for="playerName">Nombre del jugador</label>
+      <input id="playerName" type="text" minlength="2" maxlength="20" required />
+
+      <label for="questionCount">Cantidad de preguntas (5-20)</label>
+      <input id="questionCount" type="number" min="5" max="20" value="5" required />
+
+      <label for="difficulty">Nivel de dificultad</label>
+      <select id="difficulty" required>
+        <option value="easy">Fácil</option>
+        <option value="medium">Medio</option>
+        <option value="hard">Difícil</option>
+      </select>
+
+      <label for="category">Categoría</label>
+      <select id="category" required>
+        <option value="mixed">Mixtas</option>
+        <option value="musica">Música</option>
+        <option value="matematicas">Matemáticas</option>
+        <option value="historia">Historia</option>
+        <option value="ciencia">Ciencia</option>
+        <option value="deportes">Deportes</option>
+      </select>
+
+      <div class="center">
+        <button type="submit">Comenzar</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="gameScreen" class="screen hidden">
+    <div id="progress"></div>
+    <div id="question" class="question"></div>
+    <div id="answers" class="answers"></div>
+    <div id="timerWrapper">
+      <div id="timerBar"></div>
+      <span id="timerText"></span>
+    </div>
+    <div id="scoreboard"></div>
+  </div>
+
+  <div id="resultScreen" class="screen hidden">
+    <h2>Resultados</h2>
+    <p id="playerNameResult"></p>
+    <p id="totalScore"></p>
+    <p id="correctCount"></p>
+    <p id="percentage"></p>
+    <p id="avgTime"></p>
+    <div class="result-buttons">
+      <button id="playAgain">Jugar de nuevo</button>
+      <button id="newConfig">Cambiar configuración</button>
+      <button id="exit">Salir</button>
+    </div>
+  </div>
+
+  <div id="loading" class="hidden">Cargando preguntas…</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
