@@ -2,17 +2,18 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Trivia Interactiva</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="setupScreen" class="screen">
     <h1>Trivia Interactiva</h1>
     <form id="setupForm">
       <label for="playerName">Nombre del jugador</label>
-      <input id="playerName" type="text" minlength="2" maxlength="20" required />
+      <input id="playerName" type="text" minlength="2" maxlength="20" required/>
 
-      <label for="questionCount">Cantidad de preguntas (5-20)</label>
+      <label for="questionCount">Cantidad de preguntas(5-20) </label>
       <input id="questionCount" type="number" min="5" max="20" value="5" required />
 
       <label for="difficulty">Nivel de dificultad</label>
@@ -25,12 +26,15 @@
       <label for="category">Categoría</label>
       <select id="category" required>
         <option value="mixed">Mixtas</option>
-        <option value="musica">Música</option>
-        <option value="matematicas">Matemáticas</option>
-        <option value="historia">Historia</option>
-        <option value="ciencia">Ciencia</option>
-        <option value="deportes">Deportes</option>
+        <option value="9">Cultura General</option>
+        <option value="12">Música</option>
+        <option value="19">Matemáticas</option>
+        <option value="23">Historia</option>
+        <option value="17">Ciencia</option>
+        <option value="21">Deportes</option>
       </select>
+      
+      <!-- Nota: En el JS, mapear "mixed" a no enviar el parámetro category o a "any" -->
 
       <div class="center">
         <button type="submit">Comenzar</button>
@@ -58,7 +62,6 @@
     <p id="avgTime"></p>
     <div class="result-buttons">
       <button id="playAgain">Jugar de nuevo</button>
-      <button id="newConfig">Cambiar configuración</button>
       <button id="exit">Salir</button>
     </div>
   </div>
