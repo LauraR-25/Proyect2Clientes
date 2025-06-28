@@ -44,8 +44,8 @@ setupForm.addEventListener('submit', async function(e) {
   loadingDiv.classList.remove('hidden');
 
   try {
-    const url = `https://opentdb.com/api.php?amount=${questionCount}${category ? `&category=${category}` : ''}&difficulty=${difficulty}&type=multiple&encode=url3986`;
-    const res = await fetch(url);
+    const url= `https://opentdb.com/api.php?amount=${questionCount}${category ? `&category=${category}` : ''}&difficulty=${difficulty}&type=multiple&encode=url3986`;
+    const res= await fetch(url);
     const data = await res.json();
     if (data.response_code !== 0) throw new Error('No se pudieron obtener preguntas.');
     questions = data.results;
@@ -70,14 +70,11 @@ function showQuestion() {
   timeLeft = 20;
   startTime = Date.now();
 
-  // Progreso
-  progressDiv.textContent = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
 
-  // Pregunta
-  const q = questions[currentQuestion];
+  progressDiv.textContent = `Pregunta ${currentQuestion + 1} de ${questions.length}`;    // Progreso
+
+  const q = questions[currentQuestion];     // Pregunta
   questionDiv.innerHTML = decodeURIComponent(q.question);
-
-
 
   // Opciones
   const options = [...q.incorrect_answers.map(decodeURIComponent), decodeURIComponent(q.correct_answer)];
@@ -91,15 +88,15 @@ function showQuestion() {
     answersDiv.appendChild(btn);
   });
 
-
   // Temporizador visual
   timerBar.style.width = '100%';
   timerText.textContent = `${timeLeft}s`;
   timerText.classList.remove('warning');     // Quita la advertencia visual si es que existe
-  timer = setInterval(() => {
+  timer= setInterval(() => {
     timeLeft--;
     timerBar.style.width = `${(timeLeft / 20) * 100}%`;
     timerText.textContent = `${timeLeft}s`;
+
 
     // Indica cuando quedan 5 segundos o menos
     if (timeLeft <= 5) {
@@ -122,6 +119,7 @@ function selectAnswer(btn, selected, correct) {
   answered = true;
   clearInterval(timer);
 
+
   totalTime += (20 - timeLeft);      // Calcular tiempo empleado en la pregunta
 
   // Feedback visual
@@ -134,11 +132,10 @@ function selectAnswer(btn, selected, correct) {
     }
     b.disabled = true;
   });
-
   if (selected === correct) {
     score += 10;
     correctCount++;
-  } else {
+  }else{
     incorrectCount++;
   }
 
