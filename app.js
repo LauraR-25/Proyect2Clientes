@@ -170,9 +170,9 @@ function updateScoreboard() {
   `;
 }
 
-function nextQuestion() {
+function nextQuestion(){
   currentQuestion++;
-  if (currentQuestion < questions.length) {
+  if(currentQuestion< questions.length) {
     showQuestion();
   } else {
     showResults();
