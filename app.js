@@ -48,6 +48,18 @@ setupForm.addEventListener('submit', async function(e) {
     const res= await fetch(url);
     const data = await res.json();
     if (data.response_code !== 0) throw new Error('No se pudieron obtener preguntas.');
+    
+    // Validar si la cantidad de preguntas recibidas es suficiente
+    if (!data.results || data.results.length < questionCount) {
+      loadingDiv.classList.add('hidden');
+      alert(
+        `No hay suficientes preguntas disponibles para esa combinación de categoría y dificultad.\n` +
+        `Solicitaste ${questionCount}, pero solo hay ${data.results.length} disponibles.\n` +
+        `Por favor, reduce la cantidad o elige otra combinación.`
+      );
+      setupScreen.classList.remove('hidden');
+      return;
+    }
     questions = data.results;
     currentQuestion = 0;
     score = 0;
@@ -122,6 +134,7 @@ function selectAnswer(btn, selected, correct) {
 
   totalTime += (20 - timeLeft);      // Calcular tiempo empleado en la pregunta
 
+  
   // Feedback visual
   const buttons = answersDiv.querySelectorAll('button');
   buttons.forEach(b => {
